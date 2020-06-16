@@ -16,6 +16,8 @@ index = 0
 
 options = {}
 ARGV << '-h' if ARGV.empty?
+options[:verbose] = false
+options[:resume] = false
 
 OptionParser.new do |opts|
   opts.banner = "Usage: dnsct.rb [options]"
@@ -64,10 +66,19 @@ search = Dnsct::Search.new
 manager = Dnsct::Manager.new
 
 # We will be working with arrays so it is easier to reindex
-cctld = File.readlines(options[:file])
-cctld[index].each do |cctld|
-  pp cctld
-  exit
+cctld = File.open(options[:file], "rb:UTF-8")
+cctld.each do |line|
+  begin
+    puts "Checking domain: #{line}"
+    sub_per_domain = search.domain_search(line)
+    pp sub_per_domain
+  rescue
+    next
+  end
 end
+# cctld[index].each do |cctld|
+#   pp cctld
+#   exit
+# end
 
 # search.domain_search("mtel.ba")
