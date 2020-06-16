@@ -1,0 +1,5 @@
+## dnsct
+
+### Installation
+
+* $ bundle install
