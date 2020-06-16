@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    crtsh-rb (0.3.0)
+      pg (~> 1.2)
+    pg (1.2.3-x64-mingw32)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  crtsh-rb
+
+BUNDLED WITH
+   2.1.4
